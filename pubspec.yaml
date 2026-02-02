@@ -1,6 +1,6 @@
 name: iconvert
 description: A pure Dart image converter library supporting multiple formats (PNG, JPG, BMP, GIF, TIFF, ICO).
-version: 0.0.1
+version: 1.0.0
 repository: https://github.com/Sten435/iconvert
 
 environment:
