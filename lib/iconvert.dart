@@ -1,6 +1,6 @@
 /// A pure Dart image converter library supporting multiple formats.
 ///
-/// Supports converting between PNG, JPG, BMP, GIF, TIFF, WEBP, and ICO formats.
+/// Supports converting between PNG, JPG, BMP, GIF, TIFF, and ICO formats.
 library iconvert;
 
 export 'src/convert_options.dart';
