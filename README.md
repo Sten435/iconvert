@@ -1,3 +1,5 @@
+![Iconvert logo](assets/logo.png)
+
 # iconvert
 
 A pure Dart image converter library with support for multiple image formats. Convert, resize, and batch process images with ease.
