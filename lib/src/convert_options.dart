@@ -31,7 +31,7 @@ class ConvertOptions {
     this.icoSize = 256,
   });
 
-  /// Quality for lossy formats (JPG, WEBP). Range: 1-100.
+  /// Quality for lossy formats (e.g., JPG). Range: 1-100.
   final int quality;
 
   /// Target width. If null, original width is preserved.
