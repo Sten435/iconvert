@@ -1,4 +1,4 @@
-## 0.6.9
+## V:0.0.1 - Pilot
 
 ### Features
 - Pure Dart image converter supporting multiple formats (PNG, JPG, JPEG, BMP, GIF, TIFF, ICO)
