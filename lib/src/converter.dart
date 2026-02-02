@@ -187,10 +187,10 @@ class ImageConverter {
   }
 
   /// Returns a list of supported input format extensions.
-  static List<String> get supportedInputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'webp', 'ico'];
+  static List<String> get supportedInputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
 
   /// Returns a list of supported output format extensions.
-  static List<String> get supportedOutputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'webp', 'ico'];
+  static List<String> get supportedOutputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
 
   ImageFormat _getFormatFromPath(String path) {
     final extension = path.split('.').last;
