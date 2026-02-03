@@ -7,7 +7,6 @@ import 'convert_options.dart';
 import 'exceptions.dart';
 import 'image_format.dart';
 
-/// A pure Dart image converter supporting multiple formats.
 class ImageConverter {
   /// Creates an [ImageConverter] with optional default [options].
   const ImageConverter({this.defaultOptions = const ConvertOptions()});

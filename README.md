@@ -2,7 +2,7 @@
 
 # iconvert
 
-A pure Dart image converter library with support for multiple image formats. Convert, resize, and batch process images with ease.
+A minimal Dart image converter library with support for multiple image formats. Convert, resize, and batch process images with ease.
 
 ## Features
 
@@ -12,7 +12,7 @@ A pure Dart image converter library with support for multiple image formats. Con
 - **Batch processing**: Convert multiple images in a directory with a single call
 - **Quality control**: Adjust JPEG compression quality
 - **Transparency handling**: Preserve or customize transparency for different formats
-- **Pure Dart implementation**: No native dependencies, works across all Dart platforms
+- **Minimal dart implementation**: only uses 1 package, works across all Dart platforms
 
 ## Getting Started
 
@@ -195,7 +195,7 @@ All 65+ tests pass including:
 
 ## Performance
 
-- Lightweight: Pure Dart implementation with minimal dependencies
+- Lightweight: Only 1 dependecy
 - Efficient: Supports both sync and async operations
 - Scalable: Batch processing for handling multiple images
 

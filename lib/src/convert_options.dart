@@ -1,4 +1,4 @@
-/// Simple RGB color representation for pure Dart.
+/// Simple RGB color representation
 class RgbColor {
   /// Creates an RGB color.
   const RgbColor(this.red, this.green, this.blue);
