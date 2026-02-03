@@ -70,8 +70,7 @@ class ImageConverter {
     img.Image? image;
     try {
       image = img.decodeImage(inputBytes);
-    } catch (error) {
-      print('Error decoding image data: ${error.toString()}');
+    } catch (_) {
     } finally {
       if (image == null) {
         throw const ImageDecodeException('Unsupported or corrupted image data.');
