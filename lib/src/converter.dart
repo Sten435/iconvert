@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:image/image.dart' as img;
@@ -73,11 +74,13 @@ class ImageConverter {
     } catch (_) {
     } finally {
       if (image == null) {
-        throw const ImageDecodeException('Unsupported or corrupted image data.');
+        throw const ImageDecodeException(
+            'Unsupported or corrupted image data.');
       }
     }
 
     image = _applyResize(image, opts);
+    image = _applyIcoSizeIfNeeded(image, outputFormat, opts);
     image = _applyBackgroundIfNeeded(image, outputFormat, opts);
 
     return Uint8List.fromList(_encode(image, outputFormat, opts));
@@ -116,7 +119,8 @@ class ImageConverter {
       if (!_isSupportedInput(inputPath)) continue;
 
       final fileName = _getFileNameWithoutExtension(inputPath);
-      final outputPath = '${outputDir.path}${Platform.pathSeparator}$fileName.${outputFormat.extension}';
+      final outputPath =
+          '${outputDir.path}${Platform.pathSeparator}$fileName.${outputFormat.extension}';
 
       try {
         await convertFile(
@@ -166,7 +170,8 @@ class ImageConverter {
       if (!_isSupportedInput(inputPath)) continue;
 
       final fileName = _getFileNameWithoutExtension(inputPath);
-      final outputPath = '${outputDir.path}${Platform.pathSeparator}$fileName.${outputFormat.extension}';
+      final outputPath =
+          '${outputDir.path}${Platform.pathSeparator}$fileName.${outputFormat.extension}';
 
       try {
         convertFileSync(
@@ -185,10 +190,12 @@ class ImageConverter {
   }
 
   /// Returns a list of supported input format extensions.
-  static List<String> get supportedInputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
+  static List<String> get supportedInputFormats =>
+      ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
 
   /// Returns a list of supported output format extensions.
-  static List<String> get supportedOutputFormats => ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
+  static List<String> get supportedOutputFormats =>
+      ['png', 'jpg', 'jpeg', 'bmp', 'gif', 'tiff', 'tif', 'ico'];
 
   ImageFormat _getFormatFromPath(String path) {
     final extension = path.split('.').last;
@@ -219,6 +226,32 @@ class ImageConverter {
     );
   }
 
+  img.Image _applyIcoSizeIfNeeded(
+    img.Image image,
+    ImageFormat format,
+    ConvertOptions options,
+  ) {
+    if (format != ImageFormat.ico) {
+      return image;
+    }
+
+    final maxSize = options.icoSize.clamp(1, 256);
+    if (image.width <= maxSize && image.height <= maxSize) {
+      return image;
+    }
+
+    final scale = math.min(maxSize / image.width, maxSize / image.height);
+    final width = math.max(1, (image.width * scale).round());
+    final height = math.max(1, (image.height * scale).round());
+
+    return img.copyResize(
+      image,
+      width: width,
+      height: height,
+      maintainAspect: true,
+    );
+  }
+
   img.Image _applyBackgroundIfNeeded(
     img.Image image,
     ImageFormat format,
@@ -230,9 +263,12 @@ class ImageConverter {
 
     // For formats without transparency, fill transparent pixels
     final bgColor = options.backgroundColor;
-    final background = bgColor != null ? img.ColorRgba8(bgColor.red, bgColor.green, bgColor.blue, 255) : img.ColorRgba8(255, 255, 255, 255); // Default to white
+    final background = bgColor != null
+        ? img.ColorRgba8(bgColor.red, bgColor.green, bgColor.blue, 255)
+        : img.ColorRgba8(255, 255, 255, 255); // Default to white
 
-    final result = img.Image(width: image.width, height: image.height, backgroundColor: background);
+    final result = img.Image(
+        width: image.width, height: image.height, backgroundColor: background);
     return img.compositeImage(result, image);
   }
 
