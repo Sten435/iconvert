@@ -1,7 +1,7 @@
 ## v0.0.1
 
 ### Features
-- Pure Dart image converter supporting multiple formats (PNG, JPG, JPEG, BMP, GIF, TIFF, ICO)
+- Minimal dart image converter supporting multiple formats (PNG, JPG, JPEG, BMP, GIF, TIFF, ICO)
 - Synchronous and asynchronous conversion methods
 - Batch conversion for processing multiple images
 - Image resizing with aspect ratio maintenance

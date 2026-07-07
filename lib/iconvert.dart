@@ -1,4 +1,4 @@
-/// A pure Dart image converter library supporting multiple formats.
+/// A minimal dart image converter library supporting multiple formats.
 ///
 /// Supports converting between PNG, JPG, BMP, GIF, TIFF, and ICO formats.
 library iconvert;

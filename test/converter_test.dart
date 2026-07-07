@@ -179,7 +179,8 @@ void main() {
         final outputPath = '${tempDir.path}/output.jpg';
 
         const converter = ImageConverter();
-        await converter.convertFile(inputPath: inputPath, outputPath: outputPath);
+        await converter.convertFile(
+            inputPath: inputPath, outputPath: outputPath,);
 
         expect(File(outputPath).existsSync(), isTrue);
         expect(File(outputPath).lengthSync(), greaterThan(0));
@@ -400,6 +401,18 @@ void main() {
         expect(result, isNotEmpty);
       });
     }
+
+    test('resizes large images before ICO export', () {
+      final largeImage = createTestImage(width: 640, height: 480);
+      const converter = ImageConverter();
+
+      final result = converter.convert(
+        inputBytes: largeImage,
+        outputFormat: ImageFormat.ico,
+      );
+
+      expect(result, isNotEmpty);
+    });
   });
 
   group('Transparency handling', () {
