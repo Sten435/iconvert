@@ -180,7 +180,7 @@ void main() {
 
         const converter = ImageConverter();
         await converter.convertFile(
-            inputPath: inputPath, outputPath: outputPath);
+            inputPath: inputPath, outputPath: outputPath,);
 
         expect(File(outputPath).existsSync(), isTrue);
         expect(File(outputPath).lengthSync(), greaterThan(0));

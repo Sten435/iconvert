@@ -75,7 +75,7 @@ class ImageConverter {
     } finally {
       if (image == null) {
         throw const ImageDecodeException(
-            'Unsupported or corrupted image data.');
+            'Unsupported or corrupted image data.',);
       }
     }
 
@@ -268,7 +268,7 @@ class ImageConverter {
         : img.ColorRgba8(255, 255, 255, 255); // Default to white
 
     final result = img.Image(
-        width: image.width, height: image.height, backgroundColor: background);
+        width: image.width, height: image.height, backgroundColor: background,);
     return img.compositeImage(result, image);
   }
 
